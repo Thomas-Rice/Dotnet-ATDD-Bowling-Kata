@@ -1,15 +1,20 @@
 ﻿using System.Collections.Generic;
 using ATDD_BowlingAPP.Models;
+using ATDD_BowlingAPP.ScoreCalculators;
 
 namespace ATDD_BowlingAPP
 {
     public class FrameScoreGenerator
     {
-        private readonly FrameSetCalculator _framesGenerator;
+        private readonly FrameGenerator _frameGenerator;
+        private readonly FrameSymbolConverter _frameSymbolConverter;
+        private readonly Game _game;
 
         public FrameScoreGenerator()
         {
-            _framesGenerator = new FrameSetCalculator();
+            _frameSymbolConverter = new FrameSymbolConverter();
+            _frameGenerator = new FrameGenerator();
+            _game = new Game();
         }
 
         public Game GenerateGame(ParsedFrames parsedFrameScores)
@@ -17,17 +22,17 @@ namespace ATDD_BowlingAPP
             var normalGameFrameResults = parsedFrameScores.Frames;
             var bonusGameFrameResults = parsedFrameScores.BonusFrames;
 
-            var frameList = _framesGenerator.GenerateFrames(normalGameFrameResults, false);
-            if(BonusRoundScoresArePresent(bonusGameFrameResults))
-                frameList.AddRange(_framesGenerator.GenerateFrames(bonusGameFrameResults, true));
+            var convertedNormalFrames = _frameSymbolConverter.ConvertSymbols(normalGameFrameResults);
+            var convertedBonusFrames = _frameSymbolConverter.ConvertSymbols(bonusGameFrameResults);
 
-            return new Game
-            {
-                Frames = frameList
-            };
+             _game.Frames = _frameGenerator.GenerateFrames(convertedNormalFrames);
+            if(BonusRoundScoresArePresent(bonusGameFrameResults))
+                _game.Frames.AddRange(_frameGenerator.GenerateFrames(convertedBonusFrames));
+
+            return _game;
         }
 
-        private static bool BonusRoundScoresArePresent(List<string> bonusGameFrameResults)
+        private static bool BonusRoundScoresArePresent(IReadOnlyCollection<string> bonusGameFrameResults)
         {
             return bonusGameFrameResults.Count > 0;
         }

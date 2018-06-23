@@ -1,4 +1,5 @@
-﻿using ATDD_BowlingAPP.Models;
+﻿using ATDD_BowlingAPP.Enums;
+using ATDD_BowlingAPP.Models;
 
 namespace ATDD_BowlingAPP.ScoreCalculators
 {
@@ -15,13 +16,14 @@ namespace ATDD_BowlingAPP.ScoreCalculators
             for (var i = 0; i < _numberOfRounds; i++)
             {
                 var frame = gameResults.Frames[i];
-                if (frame.FrameType == Frame.FrameTypes.Strike)
+                if (frame.FrameType == FrameType.Strike)
                 {
-                    frame.OverallScore += gameResults.Frames[i + 1].OverallScore + gameResults.Frames[i + 2].OverallScore;
+                    var nextTwoFrameScores = gameResults.Frames[i + 1].OverallScore + gameResults.Frames[i + 2].OverallScore;
+                    frame.SetOverallScore(nextTwoFrameScores, frame.OverallScore);
                 }
-                if (frame.FrameType == Frame.FrameTypes.Spare)
+                if (frame.FrameType == FrameType.Spare)
                 {
-                    frame.OverallScore += gameResults.Frames[i].BowlOneScore;
+                    frame.SetOverallScore(frame.OverallScore, gameResults.Frames[i].BowlOneScore);
                 }
             }
             return gameResults;

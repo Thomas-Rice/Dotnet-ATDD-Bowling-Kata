@@ -4,14 +4,14 @@ using ATDD_BowlingAPP.Models;
 
 namespace ATDD_BowlingAPP
 {
-    public class BonusFrame : IFrameType
+    public class FrameTypeGenerator : IFrameType
     {
         public Frame GenerateFrame(IConvertedFrame frameScores)
         {
             return GetFrameResult(frameScores);
         }
 
-        public Frame GetFrameResult(IConvertedFrame convertedFrame)
+        private Frame GetFrameResult(IConvertedFrame convertedFrame)
         {
             switch (convertedFrame.FrameResults)
             {
@@ -24,6 +24,5 @@ namespace ATDD_BowlingAPP
             }
             return new NormalFrameScore(convertedFrame);
         }
-
     }
 }

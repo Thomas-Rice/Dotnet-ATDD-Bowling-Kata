@@ -55,13 +55,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrameListModelExamples.cs" />
-    <Compile Include="FrameSetCalculatorShould.cs" />
+    <Compile Include="FrameGeneratorShould.cs" />
     <Compile Include="FrameScoreGeneratorShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FrameObjectGeneratorShould.cs" />
     <Compile Include="CharToIntConverterShould.cs" />
+    <Compile Include="ConvertedFramesExamples.cs" />
     <Compile Include="ScoreExamples.cs" />
-    <Compile Include="FrameShould.cs" />
+    <Compile Include="FrameSymbolConverterShould.cs" />
     <Compile Include="ScoreInputParserShould.cs" />
     <Compile Include="ScoreCalculatorShould.cs" />
   </ItemGroup>

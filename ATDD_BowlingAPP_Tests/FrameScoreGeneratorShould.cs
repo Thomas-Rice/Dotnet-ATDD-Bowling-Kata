@@ -22,7 +22,7 @@ namespace ATDD_BowlingAPP_Tests
         [TestCase("Strikes")]
         [TestCase("NormalWithStrikeAtStart")]
         [TestCase("Normal")]
-        public void GenerateAListOfGameObjects(string input)
+        public void GenerateAGameObjectFromInput(string input)
         {
             var result = _frameScoreGenerator.GenerateGame(_scoreExamples[input]);
 

@@ -63,21 +63,32 @@
     <Compile Include="BonusFrame.cs" />
     <Compile Include="Extensions\CharToIntConverter.cs" />
     <Compile Include="FrameScoreGenerator.cs" />
-    <Compile Include="FrameSetCalculator.cs" />
+    <Compile Include="FrameGenerator.cs" />
     <Compile Include="IFrameType.cs" />
-    <Compile Include="IndividualBowlUtilities.cs" />
+    <Compile Include="FrameScores\MissFrameScore.cs" />
+    <Compile Include="Enums\FrameTypes.cs" />
+    <Compile Include="Models\BaseConvertedFrame.cs" />
+    <Compile Include="Models\ConvertedMissFrame.cs" />
+    <Compile Include="Models\ConvertedSpareFrame.cs" />
+    <Compile Include="Models\ConvertedStrikeFrame.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="IConvertedFrame.cs" />
     <Compile Include="Models\ParsedFrames.cs" />
     <Compile Include="Models\Frame.cs" />
-    <Compile Include="NormalFrame.cs" />
+    <Compile Include="FrameTypeGenerator.cs" />
+    <Compile Include="FrameScores\NormalFrameScore.cs" />
+    <Compile Include="Models\ConvertedFrame.cs" />
+    <Compile Include="ScoreCalculators\FrameSymbolConverter.cs" />
     <Compile Include="ScoreCalculators\ScoreCalculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ScoreCard.cs" />
     <Compile Include="ScoreCardParser.cs" />
     <Compile Include="Models\Score.cs" />
-    <Compile Include="ScoreCalculators\SpareScoreCalculator.cs" />
     <Compile Include="ScoreCalculators\SpecialScoreModifier.cs" />
+    <Compile Include="Enums\Scores.cs" />
+    <Compile Include="FrameScores\SpareFrameScore.cs" />
+    <Compile Include="FrameScores\StrikeFrameScore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

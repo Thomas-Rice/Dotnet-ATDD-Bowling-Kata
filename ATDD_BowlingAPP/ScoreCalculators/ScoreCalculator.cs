@@ -21,10 +21,8 @@ namespace ATDD_BowlingAPP.ScoreCalculators
         public int CalculateOverallGameScore(string scoreCard)
         {
             var gameResults = GenerateGameResults(scoreCard);
-            
-            var calculatedNormalResults = CalculateResultsForStandardFrames(gameResults);
 
-            var enrichedResults = EnrichSpecialScoreModifiers(calculatedNormalResults);
+            var enrichedResults = EnrichSpecialScoreModifiers(gameResults);
 
             return SummateOverallScores(enrichedResults);
         }
@@ -35,20 +33,9 @@ namespace ATDD_BowlingAPP.ScoreCalculators
             return _gameGenerator.GenerateGame(_parsedFrameLists);
         }
 
-        private Game CalculateResultsForStandardFrames(Game gameResults)
-        {
-            gameResults.Frames.ForEach(CalculateOverallScoreForFrame);
-            return gameResults;
-        }
-
         private Game EnrichSpecialScoreModifiers(Game frameResults)
         {
             return _specialScoreModifier.CalculateStrikeOrSpareScores(frameResults);
-        }
-
-        private void CalculateOverallScoreForFrame(Frame roundScores)
-        {
-            roundScores.OverallScore = roundScores.BowlOneScore + roundScores.BowlTwoScore;
         }
 
         private int SummateOverallScores(Game enrichedResults)
@@ -56,7 +43,6 @@ namespace ATDD_BowlingAPP.ScoreCalculators
             return enrichedResults.Frames.Sum(x => x.OverallScore);
         }
     }
-
 }
 
 

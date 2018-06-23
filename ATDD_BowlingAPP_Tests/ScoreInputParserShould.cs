@@ -19,7 +19,7 @@ namespace ATDD_BowlingAPP_Tests
 
         [TestCase("11|11|11|11|11|11|11|11|11|11||")]
         [TestCase("11|11|11|11|11|11|11|11|11|11||11")]
-        public void GenerateAGameObject(string scoreCard)
+        public void GenerateAParsedFramesObject(string scoreCard)
         {
             var result = _scoreCardParser.ParseToNormalAndBonusFrames(scoreCard);
 
@@ -89,7 +89,5 @@ namespace ATDD_BowlingAPP_Tests
 
             result.Count.ShouldBe(numberOfInts);
         }
-
-
     }
 }

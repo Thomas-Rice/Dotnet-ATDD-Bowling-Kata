@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using ATDD_BowlingAPP.Enums;
+using ATDD_BowlingAPP.FrameScores;
 using ATDD_BowlingAPP.Models;
 
 namespace ATDD_BowlingAPP_Tests
@@ -12,9 +14,10 @@ namespace ATDD_BowlingAPP_Tests
             {
                 Frames = new List<Frame>
                 {
-                    new Frame('1','1'),
-                    new Frame('1','1'),
-                    new Frame('1','1')
+                    new NormalFrameScore(new ConvertedFrame(1,1)),
+                    new NormalFrameScore(new ConvertedFrame(1,1)),
+                    new NormalFrameScore(new ConvertedFrame(1,1))
+
                 }
             };
         }
@@ -25,11 +28,9 @@ namespace ATDD_BowlingAPP_Tests
             {
                 Frames = new List<Frame>
                 {
-                    new Frame('1','1'),
-                    new Frame('1','/'),
-                    new Frame('1','1'),
-                    new Frame('1','1'),
-                    new Frame('1','1'),
+                    new NormalFrameScore(new ConvertedFrame(1,1)),
+                    new SpareFrameScore(new ConvertedSpareFrame(1)),
+                    new NormalFrameScore(new ConvertedFrame(1,1))
                 }
             };
         }
@@ -40,11 +41,9 @@ namespace ATDD_BowlingAPP_Tests
             {
                 Frames = new List<Frame>
                 {
-                    new Frame('1','1'),
-                    new Frame('X'),
-                    new Frame('1','1'),
-                    new Frame('1','1'),
-                    new Frame('1','1')
+                    new NormalFrameScore(new ConvertedFrame(1,1)),
+                    new StrikeFrameScore(),
+                    new NormalFrameScore(new ConvertedFrame(1,1))
                 }
             };
         }

@@ -41,7 +41,6 @@ namespace ATDD_BowlingAPP
 
         public List<string> ParseToListOfFrames(string scoreCardString)
         {
-            SplitToFrameTypes(scoreCardString);
             return scoreCardString.Split('|').Where(s => s != string.Empty).ToList();
         }
 

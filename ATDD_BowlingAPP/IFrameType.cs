@@ -4,6 +4,6 @@ namespace ATDD_BowlingAPP
 {
     public interface IFrameType
     {
-        Frame GenerateFrame(string frameScores);
+        Frame GenerateFrame(IConvertedFrame frameScores);
     }
 }
